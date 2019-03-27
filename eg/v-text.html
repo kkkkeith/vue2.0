@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>v-text & v-html</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-text & v-html</h1>
+    <hr>
+    <div id="app">
+       <span v-html="message"></span>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message:'<h1>hi</h1>'
+            }
+          });
+    </script>
+</body>
+</html>

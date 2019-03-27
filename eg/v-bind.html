@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>v-bind</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-bind</h1>
+    <hr>
+    <div id="app">
+     <img v-bind:src="imgSrc"  width="200px">
+    <div :class="className">1、绑定classA</div>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                imgSrc:'https://avatars1.githubusercontent.com/u/25925138?s=96&v=4',
+
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>v-model</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-model</h1>
+    <hr>
+    <div id="app">
+        <p>原始文本信息:{{message}}keith</p>
+        <h5>文本框</h5>
+        <p>v-model:<input type="text" v-model="message"></p>
+        <p>v-model.lazy:<input type="text" v-model.lazy="message"></p>
+        <p>v-model.number:<input type="text" v-model.number="message"></p>
+        <p>v-model.trim<input type="text" v-model.trim="message"></p>
+        <h5>文本域</h5>
+        <textarea cols="15" rows="3" v-model="message"></textarea>
+        <h5>单选按钮绑定</h5>
+        <input type="radio" id="male" value="男" v-model="sex">
+        <label for="male">男</label>
+        <input type="radio" id="female" value="女" v-model="sex">
+        <label for="female">女</label>
+        <p>选择性别: {{sex}}</p>
+        <h5>多选按钮绑定一个值</h5>
+        <input type="checkbox" id="isTrue" v-model="trueFalse">
+        <label for="isTrue">{{trueFalse}}</label>
+        <h5>多选按钮绑定一个数组</h5>
+        <P>
+            <input type="checkbox" id="keith" value="keith" v-model="webNames">
+            <label for="keith">keith</label><br/>
+            <input type="checkbox" id="kkeith" value="kkeith" v-model="webNames">
+            <label for="kkeith">kkeith</label><br/>
+            <input type="checkbox" id="kkkeith" value="kkkeith" v-model="webNames">
+            <label for="kkkeith">kkkeith</label>
+            <p>选择的名称: {{webNames}}</p>
+        </P>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message:'hi hi',
+                trueFalse:true,
+                webNames:[],
+                sex:''
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>v-on</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-on</h1>
+    <hr>
+    <div id="app">
+       分数：{{count}} <br>
+       <button v-on:click="add">加分</button>
+       <!-- 简写 @ -->
+       <button @click="sub">减分</button><br>
+       <!-- keyup.enter=keyup.13 enter键盘码：13 -->
+       <input type="text" v-on:keyup.enter="onEnter"  v-model="count1"/>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                count:0,
+                count1:3
+            },
+            methods:{
+                add:function(){
+                    this.count++;
+                },
+                sub:function(){
+                    this.count--;
+                },
+                onEnter:function(){
+                    this.count+=parseInt(this.count1);
+                }
+            }
+          });
+    </script>
+</body>
+</html>
