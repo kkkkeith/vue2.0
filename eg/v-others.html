@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>v-others</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-others</h1>
+    <hr>
+    <div id="app">
+        <p v-pre>{{message}}不渲染</p>
+        <p v-cloak>渲染完成后才显示</p>
+        <p v-once>{{message}}<p>
+        <input type="text" v-model="message"/>
+        <p>{{message}}<p>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message:'hi hi'
+            }
+        });
+    </script>
+</body>
+</html>
