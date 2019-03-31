@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>vue.directive</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>vue.directive</h1>
+    <hr>
+    <div id="app">
+        <div v-color="color">{{num}}</div>
+    <button @click="add">click</button>
+    <button onclick="unbind()">clear</button>
+    </div>
+    <script type="text/javascript">
+        function unbind(){
+            app.$destroy();
+        }
+        Vue.directive('color',{//绑定
+            bind:function(el,binding,vnode){//被绑定
+             
+            // var s=JSON.stringify;
+            // el.innerHTML = 
+            //     'name:'        + s(binding.name) +'<br>' + //k
+            //     'value:'       + s(binding.value) +'<br>' + //red
+            //     'expression:'  + s(binding.expression) '<br>' ;//color
+                el.style='color:'+binding.value;
+                console.log('1 - bind');
+            },
+            inserted:function(){//绑定到节点
+                console.log('2 - inserted');
+            },
+            update:function(){//组件更新
+                console.log('3 - update');
+            },
+            componentUpdated:function(){//组件更新完成
+                console.log('4 - componentUpdated');
+            },
+            unbind:function(){//解绑
+                console.log('5 - unbind');
+            }
+        });
+        var app = new Vue({
+            el:'#app',
+            data:{
+                num:1,
+                color:"red"
+            },
+            methods:{
+                add:function(){
+                    this.num++;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

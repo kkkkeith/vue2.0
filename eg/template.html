@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>template</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>template</h1>
+    <hr>
+    <div id="app">
+        {{message}}
+    </div>
+    <template id="demo2">
+        <h3 style="color:red">template模板</h3>
+    </template>
+    <script type="x-template" id="demo3">
+        <h3 style="color:red">script标签模板</h3>
+    </script>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message:'hi hi'
+            },
+            template:'#demo3'//需改ID
+            // template:`
+            //     <h3 style="color:red">选项模板</h3>
+            // `
+        });
+    </script>
+</body>
+</html>

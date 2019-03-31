@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>vue.set</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>vue.set</h1>
+    <hr>
+    <div id="app">
+    <p>{{count}}</p>
+    <ul>
+        <li v-for="i in arr">{{i}}</li>
+    </ul>
+    </div>
+    <button onclick="add()">外部修改</button>
+    <script type="text/javascript">
+        function add(){
+           // Vue.set(outData,'count',4);
+           // app.count++; //自增
+           // outData.count++; //自增
+           // app.arr[1]='ddd'; 改变数组值(单独使用无效果,先执行app.count++才会改变数组值,但不推荐) 
+           Vue.set(app.arr,1,'ddd');
+        }
+        var outData={
+            count:1,
+            arr:['a','b','c']
+        };
+        var app = new Vue({
+            el:'#app',
+            data:outData
+        });
+    </script>
+</body>
+</html>
