@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>component组件属性</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component组件属性</h1>
+    <hr>
+    <div id="app">
+        <keith v-bind:my-Name="message"></keith>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message:'keith'
+            },
+            components:{
+                //引用标签
+                "keith":{
+                    template:`<span style="color:blue;">I'm {{myName}}</span>`,
+                    // 挂载属性 注:标签内的my-Name在vue中要符合驼峰命名法
+                    props:['myName']
+                }
+            }
+        });
+    </script>
+</body>
+</html>

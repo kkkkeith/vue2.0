@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>component组件继承</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component组件继承</h1>
+    <hr>
+    <div id="app">
+        <keith></keith>
+    </div>
+    <script type="text/javascript">
+        var me={
+            template:`
+                    <span style="color:pink;"> keith is a gentle</span><br>
+                    `,
+        };
+        var keithComponent={
+            template:`<div>
+                    <span style="color:blue;">I'm keith </span><br>
+                    <me></me>
+                    </div>
+                    `,
+            components:{
+                "me":me
+            }
+        };
+        var app = new Vue({
+            el:'#app',
+            components:{
+                //引用组件名
+                "keith":keithComponent
+            }
+        });
+    </script>
+</body>
+</html>

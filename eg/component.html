@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>component组件</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component组件</h1>
+    <hr>
+    <div id="app">
+        <keith></keith>
+        <br>
+        <me></me>
+    </div>
+<!--     <div id="app1">
+        <keith></keith>
+    </div> -->
+        <!-- 自定义组件放在vue作用域范围内 -->
+        <!-- <keith></keith> -->
+    <script type="text/javascript">
+        Vue.component('keith',{
+              template:`<span style="color:blue;">我是全局组件keith</span>`,
+        });
+        var app = new Vue({
+            el:'#app',
+            components:{
+                //引用组件名
+                "me":{
+                    template:`<span style="color:pink;">我是局部组件me</span>`,
+                }
+            }
+        });
+        // var app1 = new Vue({
+        //     el:'#app1'
+        // });
+    </script>
+</body>
+</html>
