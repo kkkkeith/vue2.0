@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>methods</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>methods</h1>
+    <hr>
+    <div id="app">
+    {{a}}
+    <p><button @click="add(2,$event)">add</button></p>
+    <!-- 调用构造器的方法 -->
+    <p><btn @click.native="add(2)">add</btn></p>
+    </div>
+    <button onclick="app.add(4)" >外部调用构造器里的方法</button>
+    <script type="text/javascript">
+        var btn={
+            template:`<button>组件add</button>`
+        };
+        var app = new Vue({
+            el:'#app',
+            data:{
+                a:1
+            },
+            methods:{
+                add:function(num,event){
+                    //传递值-event对象
+                    console.log(event)
+                    return this.a+=num;
+                }
+            },
+            components:{
+                "btn":btn
+            }
+        });
+    </script>
+</body>
+</html>

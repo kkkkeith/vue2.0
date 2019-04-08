@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>propsData option</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>propsData option</h1>
+    <hr>
+    <keith></keith>
+    <script type="text/javascript">
+        var keith_a=Vue.extend({
+            template:`<p>{{msg}}-{{a}}</p>`,
+            data:function(){
+                return{
+                    msg:'hi'
+                }
+            },
+            props:['a']
+        });
+
+        new keith_a({propsData:{a:'keith'}}).$mount('keith');
+    </script>
+</body>
+</html>

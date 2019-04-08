@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>watch监控</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>watch监控</h1>
+    <hr>
+    <div id="app">
+    <p>当前温度:{{temperature}}℃</p>
+    <p>穿衣建议:{{suggestion}}</p>
+    <p><button @click="add">add</button> <button @click="reduce">reduce</button></p>
+    </div>
+    <script type="text/javascript">
+        var sugList=['~0','1~15','16~25','26~'];
+        var app = new Vue({
+            el:'#app',
+            data:{
+                temperature:5,
+                suggestion:'1~15',
+            },
+            methods:{
+                add:function(){
+                    this.temperature+=8;
+                },
+                reduce:function(){
+                    this.temperature-=8;
+                }
+            },
+            //写法之一
+            // watch:{
+            //     temperature:function(newVal,oldVal){
+            //         if(newVal>=26){
+            //             this.suggestion=sugList[3];
+            //         }else if(newVal<26 && newVal >=16)
+            //         {
+            //             this.suggestion=sugList[2];
+            //         }else if(newVal<16 && newVal >=0){
+            //             this.suggestion=sugList[1];
+            //         }else{
+            //             this.suggestion=sugList[0];
+            //         }
+            //     }
+            // }
+        });
+        //写在构造器外,降低程序耦合性
+        app.$watch('temperature',function(newVal,oldVal){
+            if(newVal>=26){
+                this.suggestion=sugList[3];
+            }else if(newVal<26 && newVal >=16)
+            {
+                this.suggestion=sugList[2];
+            }else if(newVal<16 && newVal >=0){
+                this.suggestion=sugList[1];
+            }else{
+                this.suggestion=sugList[0];
+            }
+        });
+    </script>
+</body>
+</html>
