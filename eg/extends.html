@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>extendsextends</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>extends</h1>
+    <hr>
+    <div id="app">
+        <p>{{num}}</p>
+        <p>${num}</p>
+        <p><button @click="add">add</button></p>
+    </div>
+    <script type="text/javascript">
+        var out ={
+            updated:function(){
+                console.log('扩展的updated')
+            },
+            methods:{
+                //与原生的methods相同,不起作用
+                add:function(){
+                    console.log('扩展的methods')
+                    this.num++
+                }
+            }
+        };
+        var app = new Vue({
+            el:'#app',
+            data:{
+                num:0,
+            },
+            methods:{
+                add:function(){
+                    console.log('原生的methods')
+                    this.num+=2;
+                }
+            },
+            updated:function(){
+                console.log('原生的updated');
+            },
+            extends:out,
+            //改变插值的符号
+            delimiters:['${','}']
+        });
+    </script>
+</body>
+</html>

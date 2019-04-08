@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>mixins</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>mixins</h1>
+    <hr>
+    <div id="app">
+        <p>{{num}}</p>
+        <p><button @click="add">add</button></p>
+    </div>
+    <script type="text/javascript">
+        //全局混入
+        //额外临时加入时，用于显示日志
+        Vue.mixin({
+            updated:function(){
+                console.log('全局混入');
+            }
+        });
+
+        //外部混入
+        var out={
+            updated:function(){
+                console.log('外部混入');
+            }
+        };
+        var app = new Vue({
+            el:'#app',
+            data:{
+                num:0,
+            },
+            methods:{
+                add:function(){
+                    this.num+=2;
+                }
+            },
+            updated:function(){
+                console.log('原生');
+            },
+            mixins:[out]
+        });
+    </script>
+</body>
+</html>
