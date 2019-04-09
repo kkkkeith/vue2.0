@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>实例方法</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <h1>实例方法</h1>
+    <hr>
+    <div id="app"></div>
+    <!-- 构造器范围外 -->
+    <button onclick="destroy()">销毁</button>
+    <button onclick="reload()">刷新</button>
+    <button onclick="tick()">修改</button>
+    <script type="text/javascript">
+        var keith=Vue.extend({
+            template:'<p>{{message}}</p>',
+            data:function(){
+                return {
+                    message:'hi'
+                }
+            },
+            mounted:function(){
+                console.log("mounted被创建")
+            },
+            destroyed:function(){
+                console.log("已被销毁")
+            },
+            updated:function(){
+                console.log("已被刷新")
+            },
+        });
+        //挂载
+        var vm=new keith().$mount('#app');
+        //销毁
+        function destroy (){
+            vm.$destroy();
+        }
+        //刷新
+        function reload (){
+            vm.$forceUpdate();
+        }
+        //修改值后调用
+        function tick (){
+            vm.message='已改变';
+            vm.$nextTick(function(){
+                console.log('修改后调用');
+            })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>内置组件-slot</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <h1>内置组件-slot-标签的内容扩展</h1>
+    <hr>
+    <div id="app">
+        <keith>
+            <span slot="bolgUrl">{{myData.bolgUrl}}</span>    
+            <span slot="netName">{{myData.netName}}</span>    
+            <span slot="skill">{{myData.skill}}</span>    
+        </keith>
+    </div>
+    <template id="tmp">
+        <div>
+            <p>博客地址：<slot name="bolgUrl"></slot></p>
+            <p>网名：<slot name="netName"></slot></p>
+            <p>技术类型：<slot name="skill"></slot></p>
+            </div>
+    </template>
+    <script type="text/javascript">
+        var keith={
+            template:'#tmp'
+        };
+        var app=new Vue({
+            el:'#app',
+            data:{
+                myData:{
+                    bolgUrl:'https://github.com',
+                    netName:'github',
+                    skill:'all'
+                }
+            },
+            components:{
+                "keith":keith
+            }
+        });
+   </script>
+</body>
+</html>
